@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>FormSet</title>
+</head>
+<body>
+
+<main>
+	<form method="post">
+		{% csrf_token %}
+		<fieldset>
+			<legend>FormSet</legend>
+			{{ formset.management_form }}
+			<ul style="padding: 0; list-style-type: None">
+				{% for form in formset %}
+					<li>
+						<div>
+							{{ form.as_table }}
+						</div>
+					</li>
+				{% endfor %}
+			</ul>
+			<button type="submit" name="field_add" value="field_add" formnovalidate>Add row</button>
+			<button type="submit" name="delete" value="delete" formnovalidate>Delete</button>
+		</fieldset>
+		<button type="submit" name="send_form" value="send_form">Send form</button>
+	</form>
+</main>
+
+</body>
+</html>
